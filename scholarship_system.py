@@ -28,6 +28,7 @@ _ALLOWED_OPS = {
 }
 _FORMULA_VARIABLES = ("gpa", "credits")
 
+
 def _safe_eval(node, variables):
     """Evaluate a parsed arithmetic formula without using eval()."""
     if isinstance(node, ast.Expression):
@@ -43,11 +44,13 @@ def _safe_eval(node, variables):
         return _ALLOWED_OPS[type(node.op)](_safe_eval(node.operand, variables))
     raise ValueError("Formula may only use gpa, credits, numbers and + - * /")
 
+
 def calculate_merit_score(gpa, credit_count):
-    """Return the merit score for a GPA and number of extracurricular credits."""
+    """Return the merit score for a GPA and extracurricular credits."""
     tree = ast.parse(settings["merit_formula"], mode="eval")
     values = dict(zip(_FORMULA_VARIABLES, (gpa, credit_count)))
     return round(float(_safe_eval(tree, values)), 2)
+
 
 def validate_applicant(test_scores):
     """Return an error message if the applicant data is invalid, else None."""
@@ -62,13 +65,15 @@ def validate_applicant(test_scores):
         return "family income must be declared and non-negative"
     return None
 
+
 def evaluate_applicant(student_id, test_scores, logs=None):
     """Score one applicant, record the result and return eligibility."""
     if logs is None:
         logs = []
     error = validate_applicant(test_scores)
     if error:
-        results[student_id] = {"score": None, "eligible": False, "error": error}
+        results[student_id] = {"score": None, "eligible": False,
+                               "error": error}
         logs.append(f"{student_id} rejected: {error}")
         return False
     score = calculate_merit_score(test_scores["gpa"],
@@ -77,6 +82,7 @@ def evaluate_applicant(student_id, test_scores, logs=None):
     results[student_id] = {"score": score, "eligible": eligible}
     logs.append(f"{student_id} scored {score}")
     return eligible
+
 
 def change_formula(new_formula):
     """Switch to a new merit formula if it is a safe arithmetic expression."""
@@ -89,10 +95,12 @@ def change_formula(new_formula):
     settings["merit_formula"] = new_formula
     return True
 
+
 def persist_results(file=RESULTS_FILE):
     """Write all results to a JSON file."""
     with open(file, "w", encoding="utf-8") as handle:
         json.dump(results, handle, indent=2)
+
 
 def load_results(file=RESULTS_FILE):
     """Replace the in-memory results with the ones saved in a JSON file."""
@@ -105,6 +113,7 @@ def load_results(file=RESULTS_FILE):
     results.clear()
     results.update(loaded)
 
+
 def print_shortlist():
     """Print eligible applicants, then any rejected for invalid data."""
     print("Shortlisted applicants:")
@@ -114,6 +123,7 @@ def print_shortlist():
     for student_id, record in results.items():
         if record.get("error"):
             print(" ", student_id, "rejected:", record["error"])
+
 
 def main():
     """Screen the sample applicants and print the shortlist."""
@@ -128,6 +138,7 @@ def main():
     persist_results()
     load_results()
     print_shortlist()
+
 
 if __name__ == "__main__":
     main()
