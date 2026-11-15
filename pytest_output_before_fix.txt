@@ -1,0 +1,373 @@
+syedh@PC MINGW64 ~/Desktop/SE_Labs/L6_L7_11_amusement_park_ride_access/Lab 7
+$ pytest test_processor.py
+============================= test session starts =============================
+platform win32 -- Python 3.12.6, pytest-9.2.0, pluggy-1.7.0
+rootdir: C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7
+plugins: anyio-4.16.0, hypothesis-6.170.15
+collected 9 items
+
+test_processor.py FFFFFF...                                              [100%]
+
+================================== FAILURES ===================================
+_________________ test_validate_height_and_fastpass_no_crash __________________
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py", line 11, in test_validate_height_and_fastpass_no_crash
+  |     @given(st.text() | st.none())
+  |                    ^^^
+  | ExceptionGroup: Hypothesis found 3 distinct failures. (3 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py", line 14, in test_validate_height_and_fastpass_no_crash
+    |     validate_height_and_fastpass(s)
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\processor.py", line 3, in validate_height_and_fastpass
+    |     height = int(height_str)
+    |              ^^^^^^^^^^^^^^^
+    | ValueError: invalid literal for int() with base 10: ''
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py", line 16, in test_validate_height_and_fastpass_no_crash
+    |     assert False, f"validate_height_and_fastpass crashed on {s!r} with: {type(e).__name__}: {e}"
+    | AssertionError: validate_height_and_fastpass crashed on ':' with: ValueError: invalid literal for int() with base 10: ''
+    | assert False
+    | Failing test case: test_validate_height_and_fastpass_no_crash(
+    |     s=':',
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py", line 14, in test_validate_height_and_fastpass_no_crash
+    |     validate_height_and_fastpass(s)
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\processor.py", line 2, in validate_height_and_fastpass
+    |     height_str, pass_str = rider_spec.strip().split(':')
+    |     ^^^^^^^^^^^^^^^^^^^^
+    | ValueError: not enough values to unpack (expected 2, got 1)
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py", line 16, in test_validate_height_and_fastpass_no_crash
+    |     assert False, f"validate_height_and_fastpass crashed on {s!r} with: {type(e).__name__}: {e}"
+    | AssertionError: validate_height_and_fastpass crashed on '' with: ValueError: not enough values to unpack (expected 2, got 1)
+    | assert False
+    | Failing test case: test_validate_height_and_fastpass_no_crash(
+    |     s='',  # or any other generated value
+    | )
+    +---------------- 3 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py", line 14, in test_validate_height_and_fastpass_no_crash
+    |     validate_height_and_fastpass(s)
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\processor.py", line 2, in validate_height_and_fastpass
+    |     height_str, pass_str = rider_spec.strip().split(':')
+    |                            ^^^^^^^^^^^^^^^^
+    | AttributeError: 'NoneType' object has no attribute 'strip'
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py", line 16, in test_validate_height_and_fastpass_no_crash
+    |     assert False, f"validate_height_and_fastpass crashed on {s!r} with: {type(e).__name__}: {e}"
+    | AssertionError: validate_height_and_fastpass crashed on None with: AttributeError: 'NoneType' object has no attribute 'strip'
+    | assert False
+    | Failing test case: test_validate_height_and_fastpass_no_crash(
+    |     s=None,  # or any other generated value
+    | )
+    +------------------------------------
+____________________ test_compute_dispatch_throughput_safe ____________________
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py", line 20, in test_compute_dispatch_throughput_safe
+  |     @given(st.text() | st.none())
+  |                    ^^^
+  | ExceptionGroup: Hypothesis found 3 distinct failures. (3 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py", line 23, in test_compute_dispatch_throughput_safe
+    |     compute_dispatch_throughput(s)
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\processor.py", line 12, in compute_dispatch_throughput
+    |     riders = float(riders_str)
+    |              ^^^^^^^^^^^^^^^^^
+    | ValueError: could not convert string to float: ''
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py", line 25, in test_compute_dispatch_throughput_safe
+    |     assert False, f"compute_dispatch_throughput crashed on {s!r} with: {type(e).__name__}: {e}"
+    | AssertionError: compute_dispatch_throughput crashed on '/' with: ValueError: could not convert string to float: ''
+    | assert False
+    | Failing test case: test_compute_dispatch_throughput_safe(
+    |     s='/',
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py", line 23, in test_compute_dispatch_throughput_safe
+    |     compute_dispatch_throughput(s)
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\processor.py", line 11, in compute_dispatch_throughput
+    |     riders_str, mins_str = ride_metric_str.split('/')
+    |     ^^^^^^^^^^^^^^^^^^^^
+    | ValueError: not enough values to unpack (expected 2, got 1)
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py", line 25, in test_compute_dispatch_throughput_safe
+    |     assert False, f"compute_dispatch_throughput crashed on {s!r} with: {type(e).__name__}: {e}"
+    | AssertionError: compute_dispatch_throughput crashed on '' with: ValueError: not enough values to unpack (expected 2, got 1)
+    | assert False
+    | Failing test case: test_compute_dispatch_throughput_safe(
+    |     s='',  # or any other generated value
+    | )
+    +---------------- 3 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py", line 23, in test_compute_dispatch_throughput_safe
+    |     compute_dispatch_throughput(s)
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\processor.py", line 11, in compute_dispatch_throughput
+    |     riders_str, mins_str = ride_metric_str.split('/')
+    |                            ^^^^^^^^^^^^^^^^^^^^^
+    | AttributeError: 'NoneType' object has no attribute 'split'
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py", line 25, in test_compute_dispatch_throughput_safe
+    |     assert False, f"compute_dispatch_throughput crashed on {s!r} with: {type(e).__name__}: {e}"
+    | AssertionError: compute_dispatch_throughput crashed on None with: AttributeError: 'NoneType' object has no attribute 'split'
+    | assert False
+    | Failing test case: test_compute_dispatch_throughput_safe(
+    |     s=None,  # or any other generated value
+    | )
+    +------------------------------------
+___________________ test_resolve_safety_restraint_code_safe ___________________
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py", line 29, in test_resolve_safety_restraint_code_safe
+  |     @given(st.text() | st.none())
+  |                    ^^^
+  | ExceptionGroup: Hypothesis found 2 distinct failures. (2 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py", line 32, in test_resolve_safety_restraint_code_safe
+    |     resolve_safety_restraint_code(s)
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\processor.py", line 25, in resolve_safety_restraint_code
+    |     return restraint_types[prefix]
+    |            ~~~~~~~~~~~~~~~^^^^^^^^
+    | KeyError: ''
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py", line 34, in test_resolve_safety_restraint_code_safe
+    |     assert False, f"resolve_safety_restraint_code crashed on {s!r} with: {type(e).__name__}: {e}"
+    | AssertionError: resolve_safety_restraint_code crashed on '' with: KeyError: ''
+    | assert False
+    | Failing test case: test_resolve_safety_restraint_code_safe(
+    |     s='',  # or any other generated value
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py", line 32, in test_resolve_safety_restraint_code_safe
+    |     resolve_safety_restraint_code(s)
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\processor.py", line 18, in resolve_safety_restraint_code
+    |     prefix = zone_code.strip().upper()[:3]
+    |              ^^^^^^^^^^^^^^^
+    | AttributeError: 'NoneType' object has no attribute 'strip'
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py", line 34, in test_resolve_safety_restraint_code_safe
+    |     assert False, f"resolve_safety_restraint_code crashed on {s!r} with: {type(e).__name__}: {e}"
+    | AssertionError: resolve_safety_restraint_code crashed on None with: AttributeError: 'NoneType' object has no attribute 'strip'
+    | assert False
+    | Failing test case: test_resolve_safety_restraint_code_safe(
+    |     s=None,  # or any other generated value
+    | )
+    +------------------------------------
+__________________ test_rider_spec_with_edge_values_no_crash __________________
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py", line 50, in test_rider_spec_with_edge_values_no_crash
+  |     def test_rider_spec_with_edge_values_no_crash(height, fastpass):
+  |                    ^^^
+  | ExceptionGroup: Hypothesis found 2 distinct failures. (2 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py", line 52, in test_rider_spec_with_edge_values_no_crash
+    |     validate_height_and_fastpass(f"{height}:{fastpass}")
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\processor.py", line 3, in validate_height_and_fastpass
+    |     height = int(height_str)
+    |              ^^^^^^^^^^^^^^^
+    | ValueError: invalid literal for int() with base 10: '0.0'
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py", line 54, in test_rider_spec_with_edge_values_no_crash
+    |     assert False, f"crashed on {height}:{fastpass} with: {type(e).__name__}: {e}"
+    | AssertionError: crashed on 0.0:YES with: ValueError: invalid literal for int() with base 10: '0.0'
+    | assert False
+    | Failing test case: test_rider_spec_with_edge_values_no_crash(
+    |     height='0.0',
+    |     fastpass='YES',  # or any other generated value
+    | )
+    | Explanation:
+    |     These lines were always and only run by failing test cases:
+    |         C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py:53
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py", line 52, in test_rider_spec_with_edge_values_no_crash
+    |     validate_height_and_fastpass(f"{height}:{fastpass}")
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\processor.py", line 5, in validate_height_and_fastpass
+    |     has_fastpass = pass_map[pass_str.strip().upper()]
+    |                    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+    | KeyError: 'MAYBE'
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py", line 54, in test_rider_spec_with_edge_values_no_crash
+    |     assert False, f"crashed on {height}:{fastpass} with: {type(e).__name__}: {e}"
+    | AssertionError: crashed on 0:MAYBE with: KeyError: 'MAYBE'
+    | assert False
+    | Failing test case: test_rider_spec_with_edge_values_no_crash(
+    |     height='0',  # or any other generated value
+    |     fastpass='MAYBE',
+    | )
+    | Explanation:
+    |     These lines were always and only run by failing test cases:
+    |         C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py:53
+    +------------------------------------
+__________________ test_throughput_with_edge_values_no_crash __________________
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py", line 58, in test_throughput_with_edge_values_no_crash
+  |     def test_throughput_with_edge_values_no_crash(riders, mins):
+  |                    ^^^
+  | ExceptionGroup: Hypothesis found 3 distinct failures. (3 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py", line 60, in test_throughput_with_edge_values_no_crash
+    |     compute_dispatch_throughput(f"{riders}/{mins}")
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\processor.py", line 12, in compute_dispatch_throughput
+    |     riders = float(riders_str)
+    |              ^^^^^^^^^^^^^^^^^
+    | ValueError: could not convert string to float: ''
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py", line 62, in test_throughput_with_edge_values_no_crash
+    |     assert False, f"crashed on {riders}/{mins} with: {type(e).__name__}: {e}"
+    | AssertionError: crashed on /0 with: ValueError: could not convert string to float: ''
+    | assert False
+    | Failing test case: test_throughput_with_edge_values_no_crash(
+    |     riders='',
+    |     mins='0',  # or any other generated value
+    | )
+    | Explanation:
+    |     These lines were always and only run by failing test cases:
+    |         C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py:61
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py", line 60, in test_throughput_with_edge_values_no_crash
+    |     compute_dispatch_throughput(f"{riders}/{mins}")
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\processor.py", line 13, in compute_dispatch_throughput
+    |     cycle_mins = float(mins_str)
+    |                  ^^^^^^^^^^^^^^^
+    | ValueError: could not convert string to float: ''
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py", line 62, in test_throughput_with_edge_values_no_crash
+    |     assert False, f"crashed on {riders}/{mins} with: {type(e).__name__}: {e}"
+    | AssertionError: crashed on 0/ with: ValueError: could not convert string to float: ''
+    | assert False
+    | Failing test case: test_throughput_with_edge_values_no_crash(
+    |     riders='0',  # or any other generated value
+    |     mins='',
+    | )
+    | Explanation:
+    |     These lines were always and only run by failing test cases:
+    |         C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py:61
+    +---------------- 3 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py", line 60, in test_throughput_with_edge_values_no_crash
+    |     compute_dispatch_throughput(f"{riders}/{mins}")
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\processor.py", line 14, in compute_dispatch_throughput
+    |     rate = riders / cycle_mins
+    |            ~~~~~~~^~~~~~~~~~~~
+    | ZeroDivisionError: float division by zero
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py", line 62, in test_throughput_with_edge_values_no_crash
+    |     assert False, f"crashed on {riders}/{mins} with: {type(e).__name__}: {e}"
+    | AssertionError: crashed on 0/0 with: ZeroDivisionError: float division by zero
+    | assert False
+    | Failing test case: test_throughput_with_edge_values_no_crash(
+    |     riders='0',  # or any other generated value
+    |     mins='0',
+    | )
+    | Explanation:
+    |     These lines were always and only run by failing test cases:
+    |         C:\Users\syedh\Desktop\SE_Labs\L6_L7_11_amusement_park_ride_access\Lab 7\test_processor.py:61
+    +------------------------------------
+_____________ test_restraint_code_with_near_valid_codes_no_crash ______________
+
+code = ''
+
+    @given(st.text(alphabet="CSTWRDPHLX_-0123456789 ", max_size=8))
+    def test_restraint_code_with_near_valid_codes_no_crash(code):
+        try:
+>           resolve_safety_restraint_code(code)
+
+test_processor.py:68: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+zone_code = ''
+
+    def resolve_safety_restraint_code(zone_code):
+        prefix = zone_code.strip().upper()[:3]
+        restraint_types = {
+            "CST": "Over-the-Shoulder Harness",
+            "WTR": "Lap Bar and Seatbelt",
+            "DRP": "Hydraulic Shoulder Vest",
+            "WHL": "Manual Safety Bar"
+        }
+>       return restraint_types[prefix]
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: ''
+
+processor.py:25: KeyError
+
+During handling of the above exception, another exception occurred:
+
+    @given(st.text(alphabet="CSTWRDPHLX_-0123456789 ", max_size=8))
+>   def test_restraint_code_with_near_valid_codes_no_crash(code):
+                   ^^^
+
+test_processor.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+code = ''
+
+    @given(st.text(alphabet="CSTWRDPHLX_-0123456789 ", max_size=8))
+    def test_restraint_code_with_near_valid_codes_no_crash(code):
+        try:
+            resolve_safety_restraint_code(code)
+        except Exception as e:
+>           assert False, f"crashed on {code!r} with: {type(e).__name__}: {e}"
+E           AssertionError: crashed on '' with: KeyError: ''
+E           assert False
+E           Failing test case: test_restraint_code_with_near_valid_codes_no_crash(
+E               code='',  # or any other generated value
+E           )
+
+test_processor.py:70: AssertionError
+=========================== short test summary info ===========================
+FAILED test_processor.py::test_validate_height_and_fastpass_no_crash - Except...
+FAILED test_processor.py::test_compute_dispatch_throughput_safe - ExceptionGr...
+FAILED test_processor.py::test_resolve_safety_restraint_code_safe - Exception...
+FAILED test_processor.py::test_rider_spec_with_edge_values_no_crash - Excepti...
+FAILED test_processor.py::test_throughput_with_edge_values_no_crash - Excepti...
+FAILED test_processor.py::test_restraint_code_with_near_valid_codes_no_crash
+======================== 6 failed, 3 passed in 10.08s =========================
