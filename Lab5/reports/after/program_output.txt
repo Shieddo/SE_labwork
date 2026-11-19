@@ -1,0 +1,14 @@
+$ python scholarship_system.py   (Enter pressed: default formula)
+Merit formula (Enter to keep default): Shortlisted applicants:
+  U001 score = 99.0
+  U005 score = 90.0
+  U003 rejected: GPA must be between 0 and 10.0
+  U004 rejected: family income must be declared and non-negative
+
+$ python scholarship_system.py   (formula typed: __import__("os").getcwd())
+Merit formula (Enter to keep default): Rejected formula, keeping default: Formula may only use gpa, credits, numbers and + - * /
+Shortlisted applicants:
+  U001 score = 99.0
+  U005 score = 90.0
+  U003 rejected: GPA must be between 0 and 10.0
+  U004 rejected: family income must be declared and non-negative
